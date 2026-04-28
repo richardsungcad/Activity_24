@@ -1,0 +1,221 @@
+╔═══════════════════════════════════════════════════════════════╗
+║        RICHARD TOOLS HUB - QUICK START GUIDE               ║
+║        Mobile Application Builder with Cordova             ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📋 PREREQUISITES CHECKLIST
+
+Before starting, ensure you have installed:
+  ☐ Node.js (v12+) from https://nodejs.org/
+  ☐ Java SDK (Java 8+) from https://www.oracle.com/java/
+  ☐ Android SDK from https://developer.android.com/studio
+  ☐ Cordova CLI: npm install -g cordova
+
+Environment Variables:
+  ☐ JAVA_HOME = C:\Program Files\Java\jdk1.8.0_xxx
+  ☐ ANDROID_SDK_ROOT = C:\Users\YourName\AppData\Local\Android\Sdk
+
+═══════════════════════════════════════════════════════════════
+
+⚡ QUICK START (5 MINUTES)
+
+Step 1: Navigate to project directory
+───────────────────────────────────
+  cd C:\MAMP\htdocs\IndexedBD\RichardToolsHub
+
+Step 2: Run setup (PowerShell)
+───────────────────────────────────
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  .\setup.ps1
+
+Step 3: Install dependencies
+───────────────────────────────────
+  npm install
+  npm install -g cordova
+
+Step 4: Add Android platform
+───────────────────────────────────
+  cordova platform add android
+
+Step 5: Build APK
+───────────────────────────────────
+  cordova build android --release
+
+  OR use the batch file:
+  build.bat
+
+Step 6: Install on device
+───────────────────────────────────
+  Enable USB Debugging on your Android phone
+  Connect via USB
+  cordova run android
+
+═══════════════════════════════════════════════════════════════
+
+🎨 APP FEATURES GUIDE
+
+LOGIN/REGISTRATION
+  • Username: Any unique username (no email needed)
+  • Password: Minimum 4 characters
+  • Eye Icon: Click to show/hide password
+  • Profile Picture: Upload during profile setup
+
+PRODUCT MANAGEMENT
+  • Add Products: Fill form and select category
+  • Categories: Plasticware, Kitchenware, Beauty, Accessories, Foam, Tools
+  • Prices: Displayed in Philippine Peso (₱)
+  • Images: Upload product photos
+  • Quantity: Track remaining products
+
+SEARCH & FILTER
+  • Search by product name
+  • Filter by category (dropdown)
+  • Search by price (numeric)
+  • Results update in real-time
+
+UI ELEMENTS
+  • Animated Wrench (🔧) on all screens
+  • "Richard Tools Hub" branding
+  • Clean card-based product layout
+  • Responsive design for mobile
+
+═══════════════════════════════════════════════════════════════
+
+🔒 DEFAULT TEST CREDENTIALS
+
+After first run, you need to register a new user:
+  • No pre-made accounts exist
+  • Click "Register here" on login page
+  • Fill in First Name, Last Name, Username, Password
+  • Confirm password and submit
+
+═══════════════════════════════════════════════════════════════
+
+📁 APK FILE LOCATIONS
+
+Debug Build:
+  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+
+Release Build:
+  platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+
+═══════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING
+
+Problem: "ANDROID_SDK_ROOT not set"
+Solution: Set environment variable
+  setx ANDROID_SDK_ROOT "C:\Users\YourName\AppData\Local\Android\Sdk"
+  Restart Command Prompt
+
+Problem: "Java not found"
+Solution: Set JAVA_HOME
+  setx JAVA_HOME "C:\Program Files\Java\jdk1.8.0_301"
+  Restart Command Prompt
+
+Problem: Build takes very long
+Solution: Normal behavior (first build takes 5-15 minutes)
+  Subsequent builds are faster
+
+Problem: APK won't install
+Solution: 
+  • Enable "Unknown Sources" on your Android device
+  • Delete previous app version first
+  • Check Android version (Min: 5.0 / SDK 19+)
+
+Problem: Database features not working
+Solution:
+  • Check IndexedDB in Chrome DevTools
+  • Clear browser cache
+  • Re-login to refresh data
+
+═══════════════════════════════════════════════════════════════
+
+📱 TESTING ON PHYSICAL DEVICE
+
+1. Enable Developer Mode
+   ✓ Go to Settings → About Phone
+   ✓ Tap "Build Number" 7 times
+   ✓ Go back to Settings → Developer Options
+   ✓ Enable "USB Debugging"
+
+2. Connect to PC
+   ✓ Connect Android phone via USB cable
+   ✓ First connection: Authorize debugging on phone
+
+3. Deploy App
+   ✓ Run: cordova run android
+   ✓ App will auto-install and launch
+
+4. Debugging
+   ✓ Open Chrome
+   ✓ Type: chrome://inspect
+   ✓ Click "Inspect" under your device
+
+═══════════════════════════════════════════════════════════════
+
+📚 PROJECT STRUCTURE
+
+Richard Tools Hub/
+  ├── www/
+  │   ├── index.html (all pages included)
+  │   ├── css/style.css (complete styling)
+  │   └── js/
+  │       ├── app.js (main logic)
+  │       ├── auth.js (login/register)
+  │       ├── db.js (IndexedDB)
+  │       └── products.js (CRUD ops)
+  ├── config.xml (Cordova config)
+  ├── package.json (dependencies)
+  ├── build.bat (build script)
+  ├── setup.ps1 (setup script)
+  └── README.md (full documentation)
+
+═══════════════════════════════════════════════════════════════
+
+✅ VERIFICATION CHECKLIST
+
+After build completes, verify:
+  ☑ APK file exists in expected location
+  ☑ File size is reasonable (>5MB)
+  ☑ No build errors in output
+  ☑ App icon is set to profile picture
+  ☑ Splash screen appears on launch
+  ☑ Can register new account
+  ☑ Can add/edit/delete products
+  ☑ Search functionality works
+  ☑ Price displays with ₱ symbol
+  ☑ Profile picture can be uploaded
+
+═══════════════════════════════════════════════════════════════
+
+📞 MANUAL BUILD COMMANDS
+
+If batch file fails, run manually:
+
+  cd C:\MAMP\htdocs\IndexedBD\RichardToolsHub
+  
+  cordova clean
+  cordova platform remove android
+  cordova platform add android
+  
+  cordova build android --release
+  
+  (Wait 10-15 minutes for first build)
+
+═══════════════════════════════════════════════════════════════
+
+🚀 NEXT STEPS
+
+1. Run setup.ps1 to prepare environment
+2. Run build.bat to generate APK
+3. Copy APK to phone or use USB debugging
+4. Install and test all features
+5. Register account and add sample products
+6. Verify search, categorization work correctly
+
+═══════════════════════════════════════════════════════════════
+
+For detailed documentation, see: README.md
+
+Happy Building! 🔧
