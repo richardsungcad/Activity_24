@@ -1,91 +1,5 @@
-{
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "res/xml/config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<allow-navigation href=\"cdvfile:*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "AndroidManifest.xml": {
-        "parents": {
-          "application": [
-            {
-              "xml": "<provider android:authorities=\"${applicationId}.cordova.plugin.camera.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"org.apache.cordova.camera.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/camera_provider_paths\" /></provider>",
-              "count": 1
-            }
-          ],
-          "queries": [
-            {
-              "xml": "<intent><action android:name=\"android.media.action.IMAGE_CAPTURE\" /></intent>",
-              "count": 1
-            },
-            {
-              "xml": "<intent><action android:name=\"android.intent.action.GET_CONTENT\" /></intent>",
-              "count": 1
-            },
-            {
-              "xml": "<intent><action android:name=\"android.intent.action.PICK\" /></intent>",
-              "count": 1
-            },
-            {
-              "xml": "<intent><action android:name=\"com.android.camera.action.CROP\" /><data android:mimeType=\"image/*\" android:scheme=\"content\" /></intent>",
-              "count": 1
-            }
-          ]
-        }
-      }
-    }
-  },
-  "installed_plugins": {
-    "cordova-plugin-camera": {
-      "ANDROIDX_CORE_VERSION": "1.6.+",
-      "PACKAGE_NAME": "com.richardmerchandisehub.app"
-    },
-    "cordova-plugin-file": {
-      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
-      "PACKAGE_NAME": "com.richardmerchandisehub.app"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.richardmerchandisehub.app"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.richardmerchandisehub.app"
-    },
-    "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "com.richardmerchandisehub.app"
-    }
-  },
-  "dependent_plugins": {},
-  "modules": [
+cordova.define('cordova/plugin_list', function(require, exports, module) {
+  module.exports = [
     {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
@@ -339,12 +253,12 @@
         "navigator.notification"
       ]
     }
-  ],
-  "plugin_metadata": {
+  ];
+  module.exports.metadata = {
     "cordova-plugin-camera": "8.0.0",
     "cordova-plugin-file": "8.1.3",
     "cordova-plugin-file-transfer": "2.0.0",
     "cordova-plugin-splashscreen": "6.0.1",
     "cordova-plugin-dialogs": "2.0.2"
-  }
-}
+  };
+});
